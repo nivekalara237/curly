@@ -1,7 +1,7 @@
 {
     "name": "nivekaa/fast-curly",
     "description": "built a faster curl using a native CURL php function",
-    "license": "Apache License",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "nivekaa kemta",
