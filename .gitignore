@@ -1,4 +1,4 @@
-/node_modules
+*/node_modules
 /public/hot
 /public/storage
 /storage/*.key
@@ -14,3 +14,6 @@ yarn-error.log
 .idea/
 /.idea/
 .idea/workspace.xml
+=======
+composer.phar
+/vendor/
