@@ -15,29 +15,45 @@ class ClientCallException extends \Exception{
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getErrorMessage() {
-        //error message
-        $errorMsg = $this->getMessage();
-        if (strpos('{"error":',$errorMsg)){
-            $error = json_decode($errorMsg,true);
-            return $error->error->message;
-        }
-        return $errorMsg;
-    }
-
-    /**
-     * @return int|mixed
-     */
-    public function getErrorCode(){
+    public function code()
+    {
         return $this->getCode();
     }
 
     /**
+     * @return string
+     */
+    public function message() {
+        $errorMsg = $this->getMessage();
+        // Check the HTTP Status code
+        switch ($this->code()) {
+            case 200:
+                $error_status = "200: Success";
+                break;
+            case 404:
+                $error_status = "404: API or URL Not found";
+                break;
+            case 500:
+                $error_status = "500: servers replied with an error.";
+                break;
+            case 502:
+                $error_status = "502: servers may be down or being upgraded. Hopefully they'll be OK soon!";
+                break;
+            case 503:
+                $error_status = "503: service unavailable. Hopefully they'll be OK soon!";
+                break;
+            default:
+                $error_status = "Undocumented error: " . $this->code() . " : " . $errorMsg;
+                break;
+        }
+        return $error_status;
+    }
+    /**
      * @return int
      */
-    public function getErrorLigne(){
+    public function line(){
         return $this->getLine();
     }
 }

@@ -17,3 +17,9 @@ yarn-error.log
 =======
 composer.phar
 /vendor/
+
+curly-cache/
+/curly-cache
+/curly-cache/
+/curly-cache/*.cache
+my-dir-cache/
